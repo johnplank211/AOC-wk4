@@ -23,9 +23,9 @@
 - (void)viewDidLoad
 {
 
-     self.view.backgroundColor = [UIColor darkGrayColor];
+     self.view.backgroundColor = [UIColor grayColor];
     
-    
+//user UILabel
     userName = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 10.0f, 88.0f, 30.0f)];
     if (userName != nil);
     {
@@ -36,7 +36,8 @@
         [self.view addSubview:userName];
         
     }
-    
+
+//textField for user
     textField = [[ UITextField alloc] initWithFrame:CGRectMake(100.0f, 10.0f, 200.0f, 30.0f)];
     if (textField != nil)
     {
@@ -46,44 +47,8 @@
         [self.view addSubview:textField];
     }
 
-    
-    
-    UIButton *dateButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    if (dateButton != nil);
-    {
-        dateButton.frame = CGRectMake(10.0f, 200.0f, 100.0f, 40.0f);
-        [dateButton setTitle:@"Show Date" forState:UIControlStateNormal];
-        dateButton.tag = date_Button;
-        [dateButton addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
-        
-        [self.view addSubview:dateButton];
-    }
-    
 
-    
-    UIButton *infoButton = [UIButton buttonWithType: UIButtonTypeInfoLight];
-    if (infoButton != nil)
-    {
-        infoButton.frame = CGRectMake(20.0f, 350.0f, 30.0f, 30.0f);
-        infoButton.tag = info_Button;
-        [infoButton addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
-        
-        [self.view addSubview:infoButton];
-    }
-
-    
-    appMaster = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 400.0f, 320.0f, 50.0f)];
-    if (appMaster != nil)
-    {
-        appMaster.textColor = [UIColor greenColor];
-        appMaster.numberOfLines = 2;
-        [appMaster setBackgroundColor: [UIColor clearColor]];
-        
-        [self.view addSubview:appMaster];
-    }
-    
-    
-    
+//Login button
     UIButton *loginButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     if (loginButton != nil)
     {
@@ -97,14 +62,46 @@
         
         
         [self.view addSubview:loginButton];
+    }
     
+//info button
     
-    
-    
+    UIButton *infoButton = [UIButton buttonWithType: UIButtonTypeInfoLight];
+    if (infoButton != nil)
+    {
+        infoButton.frame = CGRectMake(20.0f, 350.0f, 30.0f, 30.0f);
+        infoButton.tag = info_Button;
+        [infoButton addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [self.view addSubview:infoButton];
+    }
+
+//who made who
+    appMaster = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 400.0f, 320.0f, 50.0f)];
+    if (appMaster != nil)
+    {
+        appMaster.textColor = [UIColor whiteColor];
+        appMaster.numberOfLines = 2;
+        [appMaster setBackgroundColor: [UIColor clearColor]];
+        
+        [self.view addSubview:appMaster];
     }
     
     
+//date button
+    UIButton *dateButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    if (dateButton != nil);
+    {
+        dateButton.frame = CGRectMake(10.0f, 200.0f, 100.0f, 40.0f);
+        [dateButton setTitle:@"Show Date" forState:UIControlStateNormal];
+        dateButton.tag = date_Button;
+        [dateButton addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [self.view addSubview:dateButton];
+    }
+
     
+//display user name
     enterUser = [[UILabel alloc] initWithFrame:CGRectMake(00.0f, 120.0f, 320.0f, 50.0f)];
     if (enterUser != nil);
     {
@@ -123,9 +120,10 @@
 
 
 
-
+//click commander
 -(void)onClick:(UIButton*)button
 {
+    //login notice
     if (button.tag == login_Button)
     {
         NSString *userInput = [textField text];
@@ -134,13 +132,16 @@
         {
             enterUser.text = [NSString stringWithFormat:@"User: %@ has been logged in.", userInput];
         }
+       
+    //forgot to login notice
         else if (userInput.length == 0)
         {
             enterUser.text = @"Username cannot be empty";
         }
         
     }
-    //date notifcation 
+    
+    //date notifcation
     if (button.tag == date_Button)
     {
         date = [NSDate date];
@@ -158,7 +159,7 @@
         }
     }
     
-    
+    //who made this lovely app
     if (button.tag == info_Button)
     {
         if (appMaster != nil)
